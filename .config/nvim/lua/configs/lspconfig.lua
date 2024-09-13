@@ -2,6 +2,7 @@
 require("nvchad.configs.lspconfig").defaults()
 
 local lspconfig = require "lspconfig"
+local util = require "lspconfig/util"
 
 -- EXAMPLE
 local servers = {
@@ -21,6 +22,29 @@ for _, lsp in ipairs(servers) do
     capabilities = nvlsp.capabilities,
   }
 end
+
+lspconfig.gopls.setup {
+  on_attach = nvlsp.on_attach,
+  on_init = nvlsp.on_init,
+  capabilities = nvlsp.capabilities,
+  cmd = {"gopls"},
+  filetypes = {
+    "go",
+    "gomod",
+    "gowork",
+    "gotmpl"
+  },
+  root_dir = util.root_pattern("go.work", "go.mod", ".git"),
+  settings = {
+    gopls = {
+      completeUnimported = true,
+      usePlaceholders = true,
+      analyses = {
+        unusedparams = true,
+      }
+    }
+  }
+}
 
 -- configuring single server, example: typescript
 -- lspconfig.tsserver.setup {

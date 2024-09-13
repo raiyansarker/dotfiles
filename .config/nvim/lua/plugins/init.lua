@@ -3,13 +3,13 @@ return {
     "folke/ts-comments.nvim",
     opts = {},
     event = "VeryLazy",
-    enabled = vim.fn.has("nvim-0.10.0") == 1,
+    enabled = vim.fn.has "nvim-0.10.0" == 1,
   },
   {
     "nvimtools/none-ls.nvim",
     event = "VeryLazy",
     opts = function()
-      return require("configs.null-ls")
+      return require "configs.null-ls"
     end,
   },
   {
@@ -18,11 +18,11 @@ return {
       "javascript",
       "javascriptreact",
       "typescript",
-      "typescriptreact"
+      "typescriptreact",
     },
-    config = function ()
+    config = function()
       require("nvim-ts-autotag").setup()
-    end
+    end,
   },
   {
     "neovim/nvim-lspconfig",
@@ -31,36 +31,38 @@ return {
     end,
   },
   {
-  	"williamboman/mason.nvim",
-  	opts = {
-  		ensure_installed = {
-  			"lua-language-server", "stylua",
-  			"html-lsp", "css-lsp" , "prettier",
+    "williamboman/mason.nvim",
+    opts = {
+      ensure_installed = {
+        "lua-language-server",
+        "stylua",
+        "html-lsp",
+        "css-lsp",
+        "prettierd",
         "typescript-language-server",
         "tailwindcss-language-server",
         "eslint-lsp",
-        "prettierd"
-  		},
-  	},
+      },
+    },
   },
   {
-  	"nvim-treesitter/nvim-treesitter",
-  	opts = {
-  		ensure_installed = {
-  			"vim",
+    "nvim-treesitter/nvim-treesitter",
+    opts = {
+      ensure_installed = {
+        "vim",
         "lua",
         "vimdoc",
         "html",
         "css",
         "javascript",
         "typescript",
-        "tsx"
-  		},
-  	},
-  },
+        "tsx",
+      },
+    },
+  }
   -- {
   --   "stevearc/conform.nvim",
-  --   -- event = 'BufWritePre', -- uncomment for format on save
+  --   event = 'BufWritePre', -- uncomment for format on save
   --   opts = require "configs.conform",
   -- },
 }
